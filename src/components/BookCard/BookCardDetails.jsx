@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import BookProvider, { bookContext } from '../../contexts/BookProvider';
+
 
 const BookCardDetails = ({book}) => {
-    console.log('bookcarddetails:', book)
+    const {handleMarkAsRead, handleAddToWishlist} = useContext(bookContext);
+    
     return (
         <div className='flex items-center gap-8 mt-10'>
+            {/* book image */}
             <div className='bg-gray-200 flex justify-center items-center h-175 rounded-md flex-1'>
                 <img src={book.image} alt="" className='w-96 rounded-xl h-125'/>
             </div>
+
+            {/* book details text information */}
             <div className='space-y-4 flex-1'>
                 <div className='space-y-2'>
                     <h2 className="text-5xl font-bold">{book.bookName}</h2>
@@ -24,7 +30,7 @@ const BookCardDetails = ({book}) => {
                 <div className='border-b border-gray-400 pb-2'>
                     <span className='font-semibold'>Tag: </span>
                     {
-                        book.tags.map(tag => <div className="badge badge-info mr-2">{tag}</div>)
+                        book.tags.map((tag, ind) => <div key={ind} className="badge badge-info mr-2">{tag}</div>)
                     }
                 </div>
                 <div className='space-y-2'>
@@ -34,8 +40,8 @@ const BookCardDetails = ({book}) => {
                     <p>Rating: <span className='font-semibold'>{book.rating}</span></p>
                 </div>
                 <div className='space-x-4'>
-                    <button className='btn btn-primary btn-outline'>Read</button>
-                    <button className='btn btn-accent btn-outline'>Wishlist</button>
+                    <button onClick={() => handleMarkAsRead(book)} className='btn btn-primary btn-outline'>Mark as Read</button>
+                    <button onClick={() => handleAddToWishlist(book)} className='btn btn-accent btn-outline'>Add to Wishlist</button>
                 </div>
             </div>
         </div>
