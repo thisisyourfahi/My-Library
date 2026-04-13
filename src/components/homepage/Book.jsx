@@ -1,12 +1,18 @@
 import React from 'react';
 import { CiStar } from 'react-icons/ci';
+import { Navigate, useNavigate } from 'react-router';
 
 const Book = ({ book }) => {
     const { author, bookName, category, image, rating, tags } = book;
     // console.log(author, bookName, category, image, rating)
-    console.log(book);
+    // console.log(book);
+    const navigate = useNavigate();
+
+    const handleBookDetails = () => {
+        navigate(`/bookDetails/${book.bookId}`)
+    }
     return (
-        <div className="card bg-base-100 shadow-xl">
+        <div onClick={() => handleBookDetails()} className="card bg-base-100 border border-gray-400 hover:cursor-pointer hover:shadow-xl">
             <figure className='p-4'>
                 <img
                     src={image}
