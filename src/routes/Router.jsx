@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home";
-import Books from "../pages/Books";
 import ErrorPage from "../pages/ErrorPage";
 import BookDetails from "../pages/BookDetails";
+import ListedBooks from "../components/listedbooks/ListedBooks";
 
 export const router = createBrowserRouter([
     {
@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
                 index: true, Component: Home
             },
             {
-                path: '/books', Component: Books
+                path: '/books', Component: ListedBooks
             }, 
             {
                 path: '/bookDetails/:bookId',

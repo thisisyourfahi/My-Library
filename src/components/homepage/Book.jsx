@@ -17,7 +17,7 @@ const Book = ({ book }) => {
                 <img
                     src={image}
                     alt={bookName}
-                    className='w-96 rounded-xl h-[500px]' />
+                    className='w-96 rounded-xl h-125' />
             </figure>
             <div className="card-body">
                 <div className='flex flex-wrap gap-2'>

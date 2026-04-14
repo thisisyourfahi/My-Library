@@ -7,7 +7,6 @@ const BookProvider = ({ children }) => {
     const [wishlistBooks, setWishlistBooks] = useState([]);
 
     const handleMarkAsRead = (book) => {
-        console.log(book);
         const exist = readBooks.find(b => b.bookId == book.bookId);
         if (exist) {
             alert(`${book.bookName} is already in the Read list!`)
@@ -17,7 +16,12 @@ const BookProvider = ({ children }) => {
         }
     }
     const handleAddToWishlist = (book) => {
-        console.log(book);
+        const existInReadList = readBooks.find(b => b.bookId == book.bookId);
+        if (existInReadList) {
+            alert('This book is already on the Read list!');
+            return ;
+        }
+        
         const exist = wishlistBooks.find(b => b.bookId == book.bookId);
         if (exist) {
             alert(`${book.bookName} is already in the Wishlist!`)
