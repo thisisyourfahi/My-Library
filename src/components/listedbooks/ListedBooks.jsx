@@ -1,29 +1,37 @@
-import React, { useContext, useState } from 'react';
-import { bookContext } from '../../contexts/BookProvider';
 import ReadList from './readlist/ReadList';
 import Wishlist from './wishlist/Wishlist';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 const ListedBooks = () => {
-    const {readBooks, wishlistBooks} = useContext(bookContext);
-    const [readlist, setReadlist] = useState(true);
-
     return (
         <div>
-            <div className='bg-gray-300 rounded-md p-10 text-center mt-10 space-y-2'>
-                <p className='text-2xl font-semibold'>Listed books will be displayed here.</p>
-                <div>
-                    <button className='btn btn-primary btn-lg'>Sort By</button>
+            <div className='p-4 text-center mt-10 space-y-2'>
+                <div className="dropdown dropdown-center">
+                    <div tabIndex={0} role="button" className="btn btn-accent m-1">Sort By ⬇️</div>
+                    <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                        <li><a>Pages</a></li>
+                        <li><a>Rating</a></li>
+                        <li><a>Year of Publishing</a></li>
+                    </ul>
                 </div>
             </div>
-            <div className='mt-10 space-x-2 border-b pb-4 border-gray-400'>
-                <button onClick={() => setReadlist(!readlist)} className="btn btn-primary btn-outline">Read List</button>
-                <button onClick={() => setReadlist(!readlist)} className="btn btn-accent btn-outline">Wishlist</button>
-            </div>
             <div>
-                {
-                    readlist ? <ReadList /> : <Wishlist />
-                }
+                <Tabs>
+                    <TabList>
+                        <Tab>Read List</Tab>
+                        <Tab>Wish List</Tab>
+                    </TabList>
+
+                    <TabPanel>
+                        <ReadList />
+                    </TabPanel>
+                    <TabPanel>
+                        <Wishlist />
+                    </TabPanel>
+                </Tabs>
             </div>
+            
         </div>
     );
 };
