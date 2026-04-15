@@ -7,7 +7,7 @@ const Wishlist = () => {
     const { wishlistBooks } = useContext(bookContext);
 
     return (
-        <div className='pt-4'>
+        <div>
             <p>Wishlist books: {wishlistBooks.length}</p>
             <div className='pt-4 space-y-4 mb-20'>
                 {

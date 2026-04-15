@@ -7,7 +7,7 @@ const ReadList = () => {
     const {readBooks} = useContext(bookContext);
 
     return (
-        <div className='pt-4'>
+        <div>
             <p>Readlist books: {readBooks.length}</p>
             <div className='pt-4 space-y-4 mb-20'>
                 {
